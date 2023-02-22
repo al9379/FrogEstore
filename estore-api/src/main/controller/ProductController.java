@@ -25,7 +25,6 @@ public class ProductController {
     private static final Logger LOG = Logger.getLogger(ProductController.class.getName());
     private ProductDAO productDAO;
 
-
     public ProductController(ProductDAO productDAO) {
         this.productDAO = productDAO;
     }
@@ -34,50 +33,65 @@ public class ProductController {
      * Responds to the GET request for a product for the given id
      * 
      * @param id The id used to locate the product
-     * @return ResponseEntity with the product object and HTTP status of OK if found<br>
-     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
-     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
-     */    
+     * @return ResponseEntity with the product object and HTTP status of OK if
+     *         found<br>
+     *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @GetMapping("/{id}")
     public ResponseEntity<Product> getProduct(@PathVariable int id) {
         LOG.info("GET /products/" + id);
         try {
             Product product = productDAO.getProduct(id);
-            if(product != null)
+            if (product != null)
                 return new ResponseEntity<Product>(product, HttpStatus.OK);
             else
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
-        catch(IOException e) {
+        } catch (IOException e) {
             LOG.log(Level.SEVERE, e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
-
     /**
      * Responds to the GET request for all products
      * 
      * @return ResponseEntity with array of product objects (may be empty) and
-     * HTTP status of OK<br>
-     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     *         HTTP status of OK<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */
     @GetMapping("")
     public ResponseEntity<Product[]> getProducts() {
         LOG.info("GET /products");
         try {
             Product[] products = productDAO.getProductsArray();
-            return new ResponseEntity<Product[]>(products,HttpStatus.OK);
-        }
-        catch(IOException e) {
-            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<Product[]>(products, HttpStatus.OK);
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
             return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
 
+    /**
+     * Responds to the GET request for all products whose name contains the text in name
+     * 
+     * @param name The name parameter which contains the text used to find the products
+     * 
+     * @return ResponseEntity with array of products objects (may be empty) and
+     *         HTTP status of OK<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     *         <p>
+     */
     @GetMapping("/")
     public ResponseEntity<Product[]> searchProducts(@RequestParam String name) {
-
+        LOG.info("GET /products/?name=" + name);
+        try {
+            Product[] products = productDAO.searchFor(name);
+            return new ResponseEntity<Product[]>(products, HttpStatus.OK);
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PostMapping("")
@@ -94,5 +108,5 @@ public class ProductController {
     public ResponseEntity<Product> deleteProduct(@PathVariable int id) {
 
     }
-    
+
 }
