@@ -20,6 +20,9 @@ import com.estore.api.estoreapi.model.Product;
 import com.estore.api.estoreapi.persistence.ProductDAO;
 import java.util.logging.Logger;
 
+/**
+ * Handles the REST API requests for the Product resource
+ */
 
 @RestController
 @RequestMapping("products")
@@ -27,6 +30,12 @@ public class ProductController {
     private static final Logger LOG = Logger.getLogger(ProductController.class.getName());
     private ProductDAO productDAO;
 
+    /**
+     * Creates a REST API controller to reponds to requests
+     * 
+     * @param productDAO The {@link ProductDAO Product Data Access Object} to
+     *                   perform CRUD operations
+     */
     public ProductController(ProductDAO productDAO) {
         this.productDAO = productDAO;
     }
