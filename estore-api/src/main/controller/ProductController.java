@@ -151,9 +151,30 @@ public class ProductController {
         }
     }
 
+    /**
+     * Deletes a {@linkplain Hero hero} with the given id
+     * 
+     * @param id The id of the {@link Hero hero} to deleted
+     * 
+     * @return ResponseEntity HTTP status of OK if deleted<br>
+     *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @DeleteMapping("/{id}")
     public ResponseEntity<Product> deleteProduct(@PathVariable int id) {
+        LOG.info("DELETE /products/" + id);
+        try {
+            boolean result = productDAO.deleteProduct(id);
+            if (result == true) {
+                return new ResponseEntity<>(HttpStatus.OK);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            }
 
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
 }
