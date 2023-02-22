@@ -7,7 +7,7 @@ An online E-store system built in Java 11=> and ___ _replace with other platform
 
 - Alex Lee
 - Eli Lurie
-- Dylan Greenberg
+- MEMBER3
 - MEMBER4
 
 
