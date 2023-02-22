@@ -73,9 +73,11 @@ public class ProductController {
     }
 
     /**
-     * Responds to the GET request for all products whose name contains the text in name
+     * Responds to the GET request for all products whose name contains the text in
+     * name
      * 
-     * @param name The name parameter which contains the text used to find the products
+     * @param name The name parameter which contains the text used to find the
+     *             products
      * 
      * @return ResponseEntity with array of products objects (may be empty) and
      *         HTTP status of OK<br>
@@ -94,9 +96,32 @@ public class ProductController {
         }
     }
 
+    /**
+     * Creates a product with the provided hero object
+     * 
+     * @param product - The product to create
+     * 
+     * @return ResponseEntity with created product object and HTTP status
+     *         of CREATED<br>
+     *         ResponseEntity with HTTP status of CONFLICT if the product
+     *         object already exists<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @PostMapping("")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
+        LOG.info("POST /products " + product);
+        try {
+            Product created_product = productDAO.createProduct(product);
+            if (created_product == null) {
+                return new ResponseEntity<>(HttpStatus.CONFLICT);
+            } else {
+                return new ResponseEntity<Product>(created_product, HttpStatus.OK);
+            }
 
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("")
