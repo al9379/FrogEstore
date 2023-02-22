@@ -124,9 +124,31 @@ public class ProductController {
         }
     }
 
+    /**
+     * Updates the product with the provided product object, if it exists
+     * 
+     * @param product The product to update
+     * 
+     * @return ResponseEntity with updated product object and HTTP status
+     *         of OK if updated<br>
+     *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @PutMapping("")
     public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
+        LOG.info("PUT /products " + product);
+        try {
+            Product updated_product = productDAO.updateProduct(product);
+            if (updated_product == null) {
+                return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            } else {
+                return new ResponseEntity<Product>(updated_product, HttpStatus.OK);
+            }
 
+        } catch (IOException e) {
+            LOG.log(Level.SEVERE, e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @DeleteMapping("/{id}")
