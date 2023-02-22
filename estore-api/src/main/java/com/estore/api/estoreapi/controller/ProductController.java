@@ -1,4 +1,4 @@
-package com.estore.api.estoreapi;
+package com.estore.api.estoreapi.controller;
 
 import java.io.IOError;
 import java.io.IOException;
@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.estore.api.estoreapi.model.Product;
 import com.estore.api.estoreapi.persistence.ProductDAO;
+import java.util.logging.Logger;
+
 
 @RestController
 @RequestMapping("products")
@@ -64,7 +66,7 @@ public class ProductController {
     public ResponseEntity<Product[]> getProducts() {
         LOG.info("GET /products");
         try {
-            Product[] products = productDAO.getProductsArray();
+            Product[] products = productDAO.getAll();
             return new ResponseEntity<Product[]>(products, HttpStatus.OK);
         } catch (IOException e) {
             LOG.log(Level.SEVERE, e.getLocalizedMessage());
