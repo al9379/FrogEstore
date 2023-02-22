@@ -71,8 +71,17 @@ public class ProductFileDAO implements ProductDAO {
     }
 
     @Override
-    public Product[] searchFor(Map<String, Object> attributes) throws IOException {
-        throw new UnsupportedOperationException("Unimplemented method 'searchFor'");
+    public Product[] searchFor(String name) throws IOException {
+        ArrayList<Product> productsArrList = new ArrayList<>();
+        
+        for (Product product : products.values()) {
+            if (name == null || product.getName().contains(name)) {
+                productsArrList.add(product);
+            }
+        }
+        Product[] proArray = new Product[productsArrList.size()];
+        productsArrList.toArray(proArray);
+        return proArray;
     }
 
     @Override
@@ -87,7 +96,13 @@ public class ProductFileDAO implements ProductDAO {
     @Override
     public Product createProduct(Product product) throws IOException {
         synchronized(products) {
-            Product newPro = new Product(getNextId(), 0, product.getName());
+            Product newPro = new Product(
+                getNextId(), 
+                product.getStock(), 
+                product.getPrice(), 
+                product.getName(), 
+                product.getDescription()
+            );
             products.put(newPro.getId(), newPro);
             save();
             return newPro;
