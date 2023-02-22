@@ -10,6 +10,6 @@ public interface ProductDAO {
     Product[] searchFor(Map<String, Object> attributes) throws IOException;
     Product getProduct(int id) throws IOException;
     Product createProduct(Product product) throws IOException;
-    Product updateProduct(int id, Map<String, Object> attributes) throws IOException;
+    Product updateProduct(Product product) throws IOException;
     boolean deleteProduct(int id) throws IOException;
 }

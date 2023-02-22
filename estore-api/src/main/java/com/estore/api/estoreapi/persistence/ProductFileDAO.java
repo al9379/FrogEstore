@@ -8,7 +8,6 @@ import java.util.TreeMap;
 import java.util.logging.Logger;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.beans.factory.xml.PluggableSchemaResolver;
 import org.springframework.stereotype.Component;
 
 import com.estore.api.estoreapi.model.Product;
@@ -78,26 +77,42 @@ public class ProductFileDAO implements ProductDAO {
 
     @Override
     public Product getProduct(int id) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getProduct'");
+        synchronized(products) {
+            if (products.containsKey(id))
+                return products.get(id);
+            else return null;
+        }
     }
 
     @Override
     public Product createProduct(Product product) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'createProduct'");
+        synchronized(products) {
+            Product newPro = new Product(getNextId(), 0, product.getName());
+            products.put(newPro.getId(), newPro);
+            save();
+            return newPro;
+        }
     }
 
     @Override
-    public Product updateProduct(int id, Map<String, Object> attributes) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateProduct'");
+    public Product updateProduct(Product product) throws IOException {
+        synchronized(products) {
+            if(!products.containsKey(product.getId())) return null;
+
+            products.put(product.getId(), product);
+            save();
+            return product;
+        }
     }
 
     @Override
     public boolean deleteProduct(int id) throws IOException {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteProduct'");
+        synchronized(products) {
+            if (!products.containsKey(id)) return false;
+
+            products.remove(id);
+            return save();
+        }
     }
     
 }
