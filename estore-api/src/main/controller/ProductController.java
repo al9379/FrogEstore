@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.estore.api.estoreapi.model.Product;
 import com.estore.api.estoreapi.persistence.ProductDAO;
 
 @RestController
@@ -29,13 +30,12 @@ public class ProductController {
         this.productDAO = productDAO;
     }
 
-
     /**
      * Responds to the GET request for a product for the given id
      * 
-     * @param id    The id used to locate the product
-     * @return      ResponseEntity with the product object and HTTP status of OK if found
-     * ResponseEntity with HTTP status of NOT_FOUND if not found
+     * @param id The id used to locate the product
+     * @return ResponseEntity with the product object and HTTP status of OK if found<br>
+     * ResponseEntity with HTTP status of NOT_FOUND if not found<br>
      * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
      */    
     @GetMapping("/{id}")
@@ -54,9 +54,25 @@ public class ProductController {
         }
     }
 
+
+    /**
+     * Responds to the GET request for all products
+     * 
+     * @return ResponseEntity with array of product objects (may be empty) and
+     * HTTP status of OK<br>
+     * ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @GetMapping("")
     public ResponseEntity<Product[]> getProducts() {
-
+        LOG.info("GET /products");
+        try {
+            Product[] products = productDAO.getProductsArray();
+            return new ResponseEntity<Product[]>(products,HttpStatus.OK);
+        }
+        catch(IOException e) {
+            LOG.log(Level.SEVERE,e.getLocalizedMessage());
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/")
