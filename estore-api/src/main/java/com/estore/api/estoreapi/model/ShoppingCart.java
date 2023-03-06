@@ -1,14 +1,10 @@
 package com.estore.api.estoreapi.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ShoppingCart {
     @JsonProperty("username") private String username;
-    @JsonProperty("products") private List<Product> products;
-
+    @JsonProperty("products") private Product[] products;
 
     /**
      * Create a shopping cart with the given username
@@ -18,7 +14,7 @@ public class ShoppingCart {
         @JsonProperty("username") String username
     ){
         this.username = username;
-        this.products = new ArrayList<>();
+        this.products = new Product[]{};
     }
 
     /**
@@ -31,17 +27,13 @@ public class ShoppingCart {
      * Retrieves the list of products in the shopping cart
      * @return list of products
      */
-    public List<Product> getProducts() {return this.products;}
+    public Product[] getProducts() {return this.products;}
 
     /**
-     * Adds a products to the shopping cart
-     * @param product
+     * Sets the array of products
+     * @param products the new array of products
      */
-    public void addProduct(Product product) {this.products.add(product);}
-
-    /**
-     * Removes a product from the shopping cart
-     * @param product
-     */
-    public void removeProduct(Product product) {this.products.remove(product);}
+    public void setProducts(Product[] products) {
+        this.products = products;
+    }
 }
