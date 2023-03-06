@@ -48,11 +48,17 @@ public class ShoppingCartFileDAO implements ShoppingCartDAO{
         objectMapper.writeValue(new File(filename), cartArray);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public ShoppingCart getShoppingCart(String username) throws IOException {
-        return null;
+        return shoppingCartMap.get(username);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean createShoppingCart(String username) throws IOException {
         if(shoppingCartMap.containsKey(username)) return false;

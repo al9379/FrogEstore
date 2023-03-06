@@ -8,23 +8,23 @@ public interface ShoppingCartDAO {
 
     /**
      * Retrieves the shopping cart with the given username
-     * @param username
+     * @param username name of user
      * @return {@linkplain ShoppingCart shopping cart}
      * @throws IOException if an issue with storage
      */
     ShoppingCart getShoppingCart(String username) throws IOException;
 
     /**
-     * Creates and saves a new {@linkplain ShoppingCart shoping cart}
-     * @param username
-     * @return new {@linkplain ShoppingCart shoping cart} if successfull, null otherwise
+     * Creates and saves a new {@linkplain ShoppingCart shopping cart}
+     * @param username name of user
+     * @return true if successful, false otherwise
      * @throws IOException if an issue with storage
      */
     boolean createShoppingCart(String username) throws IOException;
 
     /**
      * Updates and saves a {@linkplain ShoppingCart shoping cart}
-     * @param shoppingCart
+     * @param shoppingCart cart to update
      * @return updated {@linkplain ShoppingCart shoping cart} if successfull, null otherwise
      * @throws IOException if an issue with storage
      */
