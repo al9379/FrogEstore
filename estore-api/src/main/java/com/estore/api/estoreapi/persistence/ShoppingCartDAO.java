@@ -20,7 +20,7 @@ public interface ShoppingCartDAO {
      * @return new {@linkplain ShoppingCart shoping cart} if successfull, null otherwise
      * @throws IOException if an issue with storage
      */
-    ShoppingCart createShoppingCart(String username) throws IOException;
+    boolean createShoppingCart(String username) throws IOException;
 
     /**
      * Updates and saves a {@linkplain ShoppingCart shoping cart}

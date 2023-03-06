@@ -54,8 +54,10 @@ public class ShoppingCartFileDAO implements ShoppingCartDAO{
     }
 
     @Override
-    public ShoppingCart createShoppingCart(String username) throws IOException {
-        return null;
+    public boolean createShoppingCart(String username) throws IOException {
+        if(shoppingCartMap.containsKey(username)) return false;
+        shoppingCartMap.put(username, new ShoppingCart(username));
+        return true;
     }
 
     @Override
