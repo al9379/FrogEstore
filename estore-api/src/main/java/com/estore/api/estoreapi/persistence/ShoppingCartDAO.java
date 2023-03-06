@@ -28,5 +28,5 @@ public interface ShoppingCartDAO {
      * @return updated {@linkplain ShoppingCart shoping cart} if successfull, null otherwise
      * @throws IOException if an issue with storage
      */
-    ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) throws IOException;
+    boolean updateShoppingCart(ShoppingCart shoppingCart) throws IOException;
 }

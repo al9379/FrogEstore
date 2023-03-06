@@ -66,8 +66,13 @@ public class ShoppingCartFileDAO implements ShoppingCartDAO{
         return true;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public ShoppingCart updateShoppingCart(ShoppingCart shoppingCart) throws IOException {
-        return null;
+    public boolean updateShoppingCart(ShoppingCart shoppingCart) throws IOException {
+        if(!shoppingCartMap.containsKey(shoppingCart.getUsername())) return false;
+        shoppingCartMap.put(shoppingCart.getUsername(), shoppingCart);
+        return true;
     }
 }
