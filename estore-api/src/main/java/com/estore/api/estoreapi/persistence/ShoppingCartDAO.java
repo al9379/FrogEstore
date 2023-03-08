@@ -9,7 +9,8 @@ public interface ShoppingCartDAO {
     /**
      * Retrieves the shopping cart with the given username
      * @param username name of user
-     * @return {@linkplain ShoppingCart shopping cart}
+     * @return {@linkplain ShoppingCart shopping cart}, null if a shopping
+     * cart already exists with that name
      * @throws IOException if an issue with storage
      */
     ShoppingCart getShoppingCart(String username) throws IOException;

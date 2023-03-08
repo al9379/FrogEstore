@@ -63,6 +63,7 @@ public class ShoppingCartFileDAO implements ShoppingCartDAO{
     public boolean createShoppingCart(String username) throws IOException {
         if(shoppingCartMap.containsKey(username)) return false;
         shoppingCartMap.put(username, new ShoppingCart(username));
+        save();
         return true;
     }
 
@@ -73,6 +74,7 @@ public class ShoppingCartFileDAO implements ShoppingCartDAO{
     public boolean updateShoppingCart(ShoppingCart shoppingCart) throws IOException {
         if(!shoppingCartMap.containsKey(shoppingCart.getUsername())) return false;
         shoppingCartMap.put(shoppingCart.getUsername(), shoppingCart);
+        save();
         return true;
     }
 }
