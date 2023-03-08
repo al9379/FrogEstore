@@ -2,6 +2,7 @@ package com.estore.api.estoreapi.persistence;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -33,6 +34,7 @@ public class UserFileDAO implements UserDAO {
     }
 
     private boolean load() throws IOException {
+        users = new ArrayList<>();
         String[] loadedUsers = objectMapper.readValue(new File(filename), String[].class);
         for (String user : loadedUsers) {
             this.users.add(user);
