@@ -30,3 +30,7 @@ build/
 
 ### VS Code ###
 .vscode/
+
+estore-ui/node_modules/
+estore-ui/.angular/cache/15.2.0/
+estore-ui/dist/template/
