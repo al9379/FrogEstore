@@ -89,7 +89,7 @@ public class ProductFileDAOTest {
 
     @Test 
     public void testUpdateProduct() throws IOException {
-        Product product = new Product(105, 5, 0.99f, "New one", "Just showed up");
+        Product product = new Product(99, 5, 0.99f, "New one", "Just showed up");
 
         Product result = assertDoesNotThrow(() -> productFileDAO.updateProduct(product), "Unexpected Exception thrown");
 
