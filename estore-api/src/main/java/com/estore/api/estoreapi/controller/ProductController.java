@@ -162,9 +162,9 @@ public class ProductController {
     }
 
     /**
-     * Deletes a {@linkplain Hero hero} with the given id
+     * Deletes a {@linkplain Product hero} with the given id
      * 
-     * @param id The id of the {@link Hero hero} to deleted
+     * @param id The id of the {@link Product hero} to deleted
      * 
      * @return ResponseEntity HTTP status of OK if deleted<br>
      *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
