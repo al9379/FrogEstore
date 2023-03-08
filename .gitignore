@@ -1,0 +1,2 @@
+estore-api/src/test/java/com/estore/api/estoreapi/controller/ProductControllerTests.java
+estore-api/src/test/java/com/estore/api/estoreapi/controller/UserControllerTests.java
