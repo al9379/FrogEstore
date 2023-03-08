@@ -44,7 +44,7 @@ public class UserFileDAO implements UserDAO {
 
     @Override
     public String[] getAll() {
-        return (String[]) this.users.toArray();
+        return users.toArray(new String[0]);
     }
 
     @Override
