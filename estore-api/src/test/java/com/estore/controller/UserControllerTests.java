@@ -97,7 +97,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testDeleteHeroNotFound() throws IOException { 
+    public void testDeleteUserNotFound() throws IOException { 
         // Setup
         String user = "Tim";
         
@@ -111,7 +111,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testDeleteHeroHandleException() throws IOException { 
+    public void testDeleteUserHandleException() throws IOException { 
         // Setup
         String user = "Tim";
         
