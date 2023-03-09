@@ -44,7 +44,7 @@ public class UserControllerTests {
     }
 
     @Test
-    public void testCreateProductFailed() throws IOException{
+    public void testCreateUserFailed() throws IOException{
         String user = "Tim";
 
         when(mockUserDAO.addUser(user)).thenReturn(null);
