@@ -201,7 +201,7 @@ public class ProductControllerTests {
     }
 
     @Test
-    public void testDeleteHeroNotFound() throws IOException { 
+    public void testDeleteProductNotFound() throws IOException { 
         // Setup
         int productId = 1;
        
@@ -215,7 +215,7 @@ public class ProductControllerTests {
     }
 
     @Test
-    public void testDeleteHeroHandleException() throws IOException { 
+    public void testDeleteProductHandleException() throws IOException { 
         // Setup
         int productId = 1;
         
