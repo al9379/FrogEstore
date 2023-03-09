@@ -25,6 +25,12 @@ public class UserControllerTests {
     private UserController userController;
     private UserDAO mockUserDAO;
 
+    @BeforeEach
+    public void setupUserController(){
+        mockUserDAO = mock(UserDAO.class);
+        userController = new UserController(mockUserDAO);
+    }
+
     @Test
     public void testCreateUser() throws IOException{
         String user = "Tim";
