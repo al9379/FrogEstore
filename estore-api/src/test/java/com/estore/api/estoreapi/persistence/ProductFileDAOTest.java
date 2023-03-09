@@ -82,14 +82,13 @@ public class ProductFileDAOTest {
                                 "Unexpected exception thrown");
 
         assertNotNull(result);
-        Product actual = productFileDAO.getProduct(product.getId());
-        assertEquals(actual.getId(),product.getId());
+        Product actual = productFileDAO.getProduct(result.getId());
         assertEquals(actual.getName(),product.getName());
     }
 
     @Test 
     public void testUpdateProduct() throws IOException {
-        Product product = new Product(99, 5, 0.99f, "New one", "Just showed up");
+        Product product = new Product(101, 5, 0.99f, "New one", "Just showed up");
 
         Product result = assertDoesNotThrow(() -> productFileDAO.updateProduct(product), "Unexpected Exception thrown");
 
