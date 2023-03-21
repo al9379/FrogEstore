@@ -25,7 +25,7 @@ import { MessagesComponent } from './messages/messages.component';
     MessagesComponent,
     ProductDetailComponent,
     ProductsComponent,
-    ProductSearchComponent
+    ProductSearchComponent,
   ],
   bootstrap: [ AppComponent ]
 })
