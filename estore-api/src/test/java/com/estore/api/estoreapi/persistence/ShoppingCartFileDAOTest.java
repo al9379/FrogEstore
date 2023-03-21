@@ -72,6 +72,13 @@ class ShoppingCartFileDAOTest {
     }
 
     @Test
+    public void testDeleteShoppingCart() {
+        boolean result = assertDoesNotThrow(() -> shoppingCartFileDAO.deleteShoppingCart("dylan"));
+
+        assertTrue(result);
+    }
+
+    @Test
     public void testSaveException() throws IOException {
         doThrow(new IOException())
                 .when(mockObjectMapper)
