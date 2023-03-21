@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit{
   loggedIn : boolean = false;
 
   ngOnInit(): void {
+    this.loggedIn = localStorage.getItem('username') != undefined;
   }
 
   

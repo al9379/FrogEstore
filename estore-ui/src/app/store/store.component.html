@@ -1,6 +1,9 @@
 <div class="products-menu">
+  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
   <a class="products" *ngFor="let product of products">
-      {{product.name}}
+    <a class="product-info">
+      {{product.name}} : ${{product.price}}
+    </a>
     <button type="button" class="add-button" (click)="addToCart(product.id);">
     Add To Cart
     </button>

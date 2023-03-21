@@ -4,6 +4,10 @@
   <div>
     <label for="product-name">product name: </label>
     <input id="product-name" [(ngModel)]="product.name" placeholder="product name"/>
+    <label for="product-price">product price: </label>
+    <input id="product-price" [(ngModel)]="product.price" placeholder="product price"/>
+    <label for="product-description">product descrption: </label>
+    <input id="product-description" [(ngModel)]="product.description" placeholder="product description"/>
   </div>
   <button type="button" (click)="goBack()">go back</button>
   <button type="button" (click)="save()">save</button>
