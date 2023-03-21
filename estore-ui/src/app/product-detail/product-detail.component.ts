@@ -10,7 +10,7 @@ import { ProductService } from '../product.service';
   templateUrl: './product-detail.component.html',
   styleUrls: [ './product-detail.component.css' ]
 })
-export class productDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit {
   product: Product | undefined;
 
   constructor(
@@ -20,12 +20,12 @@ export class productDetailComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.getproduct();
+    this.getProduct();
   }
 
-  getproduct(): void {
+  getProduct(): void {
     const id = parseInt(this.route.snapshot.paramMap.get('id')!, 10);
-    this.productService.getproduct(id)
+    this.productService.getProduct(id)
       .subscribe(product => this.product = product);
   }
 
@@ -35,7 +35,7 @@ export class productDetailComponent implements OnInit {
 
   save(): void {
     if (this.product) {
-      this.productService.updateproduct(this.product)
+      this.productService.updateProduct(this.product)
         .subscribe(() => this.goBack());
     }
   }

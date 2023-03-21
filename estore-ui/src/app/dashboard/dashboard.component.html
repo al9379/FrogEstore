@@ -1,9 +1,9 @@
 <h2>Top Frogs</h2>
 <div class="heroes-menu">
-  <a *ngFor="let hero of heroes"
-      routerLink="/detail/{{hero.id}}">
-      {{hero.name}}
+  <a *ngFor="let product of products"
+      routerLink="/detail/{{product.id}}">
+      {{product.name}}
   </a>
 </div>
 
-<app-frog-search></app-frog-search>
+<app-product-search></app-product-search>
