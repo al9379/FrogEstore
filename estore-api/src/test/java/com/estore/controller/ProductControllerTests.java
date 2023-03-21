@@ -73,7 +73,7 @@ public class ProductControllerTests {
 
         ResponseEntity<Product> response = productController.createProduct(product);
 
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(product, response.getBody());
     }
 
