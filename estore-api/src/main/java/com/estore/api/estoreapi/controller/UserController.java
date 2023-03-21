@@ -40,6 +40,14 @@ public class UserController {
         }
     }
 
+    @GetMapping("/{username}")
+    public ResponseEntity<String> getUser(@PathVariable String username) {
+        LOG.info("GET /users");
+        if (userDAO.userExists(username)) {
+            return new ResponseEntity<String>(username, HttpStatus.OK);
+        }  else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    }
+
     @PostMapping("")
     public ResponseEntity<String> createUser(@RequestBody String username) {
         LOG.info("POST /users " + username);

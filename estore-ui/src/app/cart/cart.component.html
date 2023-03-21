@@ -1,0 +1,8 @@
+<div class="products-menu">
+  <a class="products" *ngFor="let product of products">
+      {{product.name}}
+    <button type="button" class="remove-button" (click)="removeFromCart(product.id);">
+    Remove from cart
+    </button>
+  </a>
+</div>

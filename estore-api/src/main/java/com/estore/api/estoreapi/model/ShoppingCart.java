@@ -4,17 +4,18 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ShoppingCart {
     @JsonProperty("username") private String username;
-    @JsonProperty("products") private Product[] products;
+    @JsonProperty("products") private int[] products;
 
     /**
      * Create a shopping cart with the given username
      * @param username user's username
      */
     public ShoppingCart(
-        @JsonProperty("username") String username
+        @JsonProperty("username") String username,
+        @JsonProperty("products") int[] products
     ){
         this.username = username;
-        this.products = new Product[]{};
+        this.products = products.clone();
     }
 
     /**
@@ -27,13 +28,16 @@ public class ShoppingCart {
      * Retrieves the list of products in the shopping cart
      * @return list of products
      */
-    public Product[] getProducts() {return this.products;}
+    public int[] getProducts() {
+        return this.products;
+    }
 
     /**
      * Sets the array of products
-     * @param products the new array of products
+     * @param int the new array of products ids
      */
-    public void setProducts(Product[] products) {
+    public void setProducts(int[] products) {
         this.products = products;
     }
+
 }
