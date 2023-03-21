@@ -44,6 +44,29 @@ public class UserControllerTests {
     }
 
     @Test
+    public void testGetUser() {
+        String user = "Tim";
+
+        when(mockUserDAO.userExists(user)).thenReturn(true);
+
+        ResponseEntity<String> response = userController.getUser(user);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(user, response.getBody());
+    }
+
+    @Test
+    public void testGetUserNotFound() throws IOException {
+        String user = "Tim";
+
+        when(mockUserDAO.userExists(user)).thenReturn(false);
+
+        ResponseEntity<String> response = userController.getUser(user);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
     public void testCreateUserFailed() throws IOException{
         String user = "Tim";
 
