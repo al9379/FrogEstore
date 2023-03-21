@@ -39,7 +39,7 @@ public class UserControllerTests {
 
         ResponseEntity<String> response = userController.createUser(user);
 
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(user, response.getBody());
     }
 
