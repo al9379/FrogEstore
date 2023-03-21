@@ -4,6 +4,7 @@
   <!--<a routerLink="/dashboard">Dashboard</a>-->
   <a routerLink="/login">Login</a>
   <a routerLink="/store">Store</a>
+  <a *ngIf="loggedIn()==true" routerLink="/cart">Shopping Cart</a>
   <a *ngIf="admin()==true" routerLink="/products">Edit Products</a>
 </nav>
 <router-outlet></router-outlet>

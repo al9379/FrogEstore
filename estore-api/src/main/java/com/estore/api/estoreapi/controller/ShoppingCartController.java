@@ -66,7 +66,7 @@ public class ShoppingCartController {
     }
 
    @PutMapping("/{username}")
-    public ResponseEntity<String> updateProduct(@RequestBody ShoppingCart shoppingCart) {
+    public ResponseEntity<String> updateCart(@RequestBody ShoppingCart shoppingCart) {
         LOG.info("PUT /carts" + shoppingCart);
         try {
             boolean updated_cart = shoppingCartDAO.updateShoppingCart(shoppingCart);

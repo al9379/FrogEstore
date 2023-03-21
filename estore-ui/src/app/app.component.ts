@@ -7,10 +7,13 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Frog Inc.';
-  a = false;
 
   admin() : boolean {
     return localStorage.getItem('username')=='admin';
+  }
+
+  loggedIn() : boolean {
+    return localStorage.getItem('username')!=undefined;
   }
 
   userBanner() :string{

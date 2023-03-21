@@ -13,6 +13,7 @@ import { ProductSearchComponent } from './product-search/product-search.componen
 import { MessagesComponent } from './messages/messages.component';
 import { StoreComponent } from './store/store.component';
 import { LoginComponent } from './login/login.component';
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   imports: [
@@ -30,6 +31,7 @@ import { LoginComponent } from './login/login.component';
     ProductSearchComponent,
     StoreComponent,
     LoginComponent,
+    CartComponent,
   ],
   bootstrap: [ AppComponent ]
 })
