@@ -3,12 +3,14 @@ package com.estore.api.estoreapi.persistence;
 import com.estore.api.estoreapi.model.ShoppingCart;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 import java.util.TreeMap;
 
+@Component
 public class ShoppingCartFileDAO implements ShoppingCartDAO{
     private Map<String, ShoppingCart> shoppingCartMap;
     private final ObjectMapper objectMapper;
@@ -20,7 +22,7 @@ public class ShoppingCartFileDAO implements ShoppingCartDAO{
      * @param objectMapper JSON object converter
      * @throws IOException if there's an issue with the file
      */
-    public ShoppingCartFileDAO(@Value("data/shoppingCarts.json") String filename, ObjectMapper objectMapper) throws IOException {
+    public ShoppingCartFileDAO(@Value("${carts.file}")  String filename, ObjectMapper objectMapper) throws IOException {
         this.filename = filename;
         this.objectMapper = objectMapper;
         load();
@@ -74,6 +76,14 @@ public class ShoppingCartFileDAO implements ShoppingCartDAO{
     public boolean updateShoppingCart(ShoppingCart shoppingCart) throws IOException {
         if(!shoppingCartMap.containsKey(shoppingCart.getUsername())) return false;
         shoppingCartMap.put(shoppingCart.getUsername(), shoppingCart);
+        save();
+        return true;
+    }
+
+    @Override
+    public boolean deleteShoppingCart(String username) throws IOException {
+        if (this.getShoppingCart(username) == null) return false;
+        shoppingCartMap.remove(username);
         save();
         return true;
     }

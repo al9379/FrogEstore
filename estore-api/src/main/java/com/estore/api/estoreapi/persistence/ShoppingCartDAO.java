@@ -30,4 +30,6 @@ public interface ShoppingCartDAO {
      * @throws IOException if an issue with storage
      */
     boolean updateShoppingCart(ShoppingCart shoppingCart) throws IOException;
+
+    boolean deleteShoppingCart(String username) throws IOException;
 }

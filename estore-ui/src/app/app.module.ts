@@ -11,6 +11,8 @@ import { ProductDetailComponent } from './product-detail/product-detail.componen
 import { ProductsComponent } from './products/products.component';
 import { ProductSearchComponent } from './product-search/product-search.component';
 import { MessagesComponent } from './messages/messages.component';
+import { StoreComponent } from './store/store.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   imports: [
@@ -26,6 +28,8 @@ import { MessagesComponent } from './messages/messages.component';
     ProductDetailComponent,
     ProductsComponent,
     ProductSearchComponent,
+    StoreComponent,
+    LoginComponent,
   ],
   bootstrap: [ AppComponent ]
 })

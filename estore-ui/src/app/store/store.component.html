@@ -1,0 +1,8 @@
+<div class="products-menu">
+  <a class="products" *ngFor="let product of products">
+      {{product.name}}
+    <button type="button" class="add-button" (click)="addToCart(product.id);">
+    Add To Cart
+    </button>
+  </a>
+</div>

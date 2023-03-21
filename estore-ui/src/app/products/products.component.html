@@ -1,11 +1,15 @@
-<h2>My products</h2>
+<h2>Edit products</h2>
 
 <div>
-  <label for="new-product">product name: </label>
-  <input id="new-product" #productName />
+  <label for="new-product-name">Product name: </label>
+  <input id="new-product-name" #productName />
+  <label for="new-product-price">Price: </label>
+  <input id="new-product-price" #productPrice  type="number"/>
+  <label for="new-product-name">Description: </label>
+  <input id="new-product-name" #productDescription />
 
   <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button" (click)="add(productName.value); productName.value=''">
+  <button type="button" class="add-button" (click)="add(productName.value, productPrice.value, productDescription.value); productName.value=''">
     Add product
   </button>
 </div>
