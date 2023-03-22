@@ -21,6 +21,9 @@ import org.junit.jupiter.api.Test;
 import com.estore.api.estoreapi.model.Product;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * The unit tests for the ProductFileDAO class
+ */
 @Tag("Persistence-tier")
 public class ProductFileDAOTest {
     ProductFileDAO productFileDAO;

@@ -21,6 +21,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 
+/**
+ * The unit tests for the ProductController class
+ */
 @Tag("Controller-Tier")
 public class ProductControllerTests {
     private ProductController productController;

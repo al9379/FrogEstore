@@ -20,7 +20,9 @@ import org.junit.jupiter.api.Test;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 
-
+/**
+ * The unit tests for the UserFileDAO class
+ */
 @Tag("Persistence-tier")
 public class UserFileDAOTest {
     UserFileDAO userFileDAO;

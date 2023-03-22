@@ -14,6 +14,9 @@ import java.io.IOException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
 
+/**
+ * The unit tests for the ShoppingCartController class
+ */
 @Tag("Controller-Tier")
 public class ShoppingCartControllerTests {
     private ShoppingCartController shoppingCartController;

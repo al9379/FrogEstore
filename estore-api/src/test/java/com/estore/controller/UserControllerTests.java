@@ -20,6 +20,9 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+/**
+ * The unit tests for the UserController class
+ */
 @Tag("Controller-Tier")
 public class UserControllerTests {
     private UserController userController;
