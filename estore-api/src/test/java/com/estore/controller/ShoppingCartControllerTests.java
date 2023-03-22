@@ -57,4 +57,38 @@ public class ShoppingCartControllerTests {
 
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
+
+    @Test
+    public void testGetShoppingCart() throws IOException {
+        ShoppingCart cart = new ShoppingCart("Eli", new int[]{1,2});
+
+        when(mockShoppingCartDAO.getShoppingCart(cart.getUsername())).thenReturn(cart);
+
+        ResponseEntity<ShoppingCart> response = shoppingCartController.getCart(cart.getUsername());
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(cart, response.getBody());
+    }
+
+    @Test
+    public void testGetShoppingCartNotFound() throws IOException {
+        ShoppingCart cart = new ShoppingCart("Eli", new int[]{1,2});
+
+        when(mockShoppingCartDAO.getShoppingCart(cart.getUsername())).thenReturn(null);
+
+        ResponseEntity<ShoppingCart> response = shoppingCartController.getCart(cart.getUsername());
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    public void testGetShoppingCartHandleException() throws IOException {
+        ShoppingCart cart = new ShoppingCart("Eli", new int[]{1,2});
+
+        doThrow(new IOException()).when(mockShoppingCartDAO).getShoppingCart(cart.getUsername());
+
+        ResponseEntity<ShoppingCart> response = shoppingCartController.getCart(cart.getUsername());
+
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
 }
