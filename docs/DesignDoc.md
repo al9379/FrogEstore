@@ -9,28 +9,23 @@ geometry: margin=1in
 > and appear in the generated PDF in italics._
 
 ## Team Information
-* Team name: TEAMNAME
+* Team name: DEAL
 * Team members
-  * MEMBER1
-  * MEMBER2
-  * MEMBER3
-  * MEMBER4
+  * Alex Lee
+  * Dylan Greenberg
+  * Eli Lurie
+  * Lucas French
 
 ## Executive Summary
 
 This is a summary of the project.
 
 ### Purpose
-> _Provide a very brief statement about the project and the most
-> important user group and user goals._
+
+The project is a e-store that focuses on the distribution of frogs. The most important user group are frog owners and potential frog buyers. The user goals is to make a website where the user can easily access the inventory of frogs sold, search through the inventory, and add their desired items to a shopping cart to be purchased.
 
 ### Glossary and Acronyms
-> _Provide a table of terms and acronyms._
-
-| Term | Definition |
-|------|------------|
-| SPA | Single Page |
-
+N/A
 
 ## Requirements
 
@@ -41,29 +36,40 @@ This section describes the features of the application.
 > maybe Epics and critical Stories._
 
 ### Definition of MVP
-> _Provide a simple description of the Minimum Viable Product._
+Customers can buy frogs and admins can edit the inventory from which customers purchase.
 
 ### MVP Features
-> _Provide a list of top-level Epics and/or Stories of the MVP._
+Login to account
+View products
+Search products
+Edit products
+Shopping cart
 
 ### Roadmap of Enhancements
-> _Provide a list of top-level features in the order you plan to consider them._
+Search for a product based off its attributes
+Notify the customer when its time to order more food
 
 
 ## Application Domain
 
-This section describes the application domain.
+![Domain Model](Domain-Model.png)
 
-![Domain Model](domain-model-placeholder.png)
-
-> _Provide a high-level overview of the domain for this application. You
-> can discuss the more important domain entities and their relationship
-> to each other._
-
-
+User: A user is a person who interacts with the e-store. 
+There are two types of users: 
+  Customer: Customer is someone who can view the list of products being sold and add them to their shopping cart to be purchased. 
+  Admin: The admin can edit the inventory
+Product: A product is any item that the e-store sells. Each product has the following attributes: 
+  Name: The name of the product 
+  Description: A detailed description of the product 
+  Price: The price of the product 
+  Quantity: The number of units of the product that are available for purchase
+Cart: A cart is a temporary storage area for items that a user intends to purchase. Each cart has the following attributes: 
+  User: The user who owns the cart 
+  Items: A list of the products in the cart and their quantities
+  
 ## Architecture and Design
 
-This section describes the application architecture.
+Using the SPRING API it communicates with Angular to accept the data inserted by the admin user and allow features for the customer such as the shopping cart.
 
 ### Summary
 
@@ -85,9 +91,7 @@ Both the ViewModel and Model are built using Java and Spring Framework. Details 
 This section describes the web interface flow; this is how the user views and interacts
 with the e-store application.
 
-> _Provide a summary of the application's user interface.  Describe, from
-> the user's perspective, the flow of the pages in the web application._
-
+The application starts at a sign in window, this gives the choice for the user to sign in as an admin or make their account as a customer. If a customer signs in there a tabs available to logout, view the products, and to view their shopping cart. If an admin signs in, it shows a list that can be editted by either removing or adding items along with changing the item descriptions.
 
 ### View Tier
 > _Provide a summary of the View Tier UI of your architecture.
