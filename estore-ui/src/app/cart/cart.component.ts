@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { Cart } from '../cart';
 import { CartService } from '../cart.service';
 import { Product } from '../product';
 import { ProductService } from '../product.service';
@@ -40,6 +39,6 @@ export class CartComponent {
         cart.products=this.products.map(product => product.id);
         this.cartService.updateCart(cart);
       });
-    }  
+    }
   }
 }

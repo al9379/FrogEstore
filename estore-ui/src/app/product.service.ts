@@ -52,7 +52,7 @@ export class ProductService {
     );
   }
 
-  /* GET products whose name contains search term */
+  /** GET products whose name contains search term */
   searchProducts(term: string): Observable<Product[]> {
     if (!term.trim()) {
       // if not search term, return empty product array.
