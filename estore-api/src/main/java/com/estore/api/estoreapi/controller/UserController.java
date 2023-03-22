@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import com.estore.api.estoreapi.model.Product;
+import com.estore.api.estoreapi.persistence.ProductDAO;
 import org.apache.catalina.connector.Response;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -18,16 +20,33 @@ import org.w3c.dom.UserDataHandler;
 
 import com.estore.api.estoreapi.persistence.UserDAO;
 
+/**
+ * Handles the REST API requests for the User resource
+ */
 @RestController
 @RequestMapping("users")
 public class UserController {
     private static final Logger LOG = Logger.getLogger(UserController.class.getName());
     private UserDAO userDAO;
 
+
+    /**
+     * Creates a REST API controller which responds to requests
+     *
+     * @param userDAO The {@link UserDAO User Data Access Object} to
+     *                   perform CRUD operations
+     */
     public UserController(UserDAO userDAO) {
         this.userDAO = userDAO;
     }
 
+    /**
+     * Responds to the GET request for all users
+     *
+     * @return ResponseEntity with array of username (may be empty) and
+     *         HTTP status of OK<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @GetMapping("")
     public ResponseEntity<String[]> getUsers() {
         LOG.info("GET /users");
@@ -40,6 +59,14 @@ public class UserController {
         }
     }
 
+    /**
+     * Responds to the GET request for a user for the given username
+     *
+     * @param username The username used to locate the user
+     * @return ResponseEntity with the username and HTTP status of OK if
+     *         found<br>
+     *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     */
     @GetMapping("/{username}")
     public ResponseEntity<String> getUser(@PathVariable String username) {
         LOG.info("GET /users");
@@ -48,6 +75,17 @@ public class UserController {
         }  else return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     }
 
+    /**
+     * Creates a user with the provided username
+     *
+     * @param username - The username of user to create
+     *
+     * @return ResponseEntity with username of the created user object and HTTP status
+     *         of CREATED<br>
+     *         ResponseEntity with HTTP status of CONFLICT if a user object with that
+     *         username already exists<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @PostMapping("")
     public ResponseEntity<String> createUser(@RequestBody String username) {
         LOG.info("POST /users " + username);
@@ -61,6 +99,15 @@ public class UserController {
         }
     }
 
+    /**
+     * Deletes a user with the given username
+     *
+     * @param username The username of the user to be deleted
+     *
+     * @return ResponseEntity HTTP status of OK if deleted<br>
+     *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
+     *         ResponseEntity with HTTP status of INTERNAL_SERVER_ERROR otherwise
+     */
     @DeleteMapping("/{username}")
     public ResponseEntity<String> deleteUser(@PathVariable String username) {
         LOG.info("DELETE /user/" + username);
