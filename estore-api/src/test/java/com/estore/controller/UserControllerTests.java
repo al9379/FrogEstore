@@ -78,6 +78,17 @@ public class UserControllerTests {
     }
 
     @Test
+    public void testCreateUserHandleException() throws IOException {
+        String user = "Tim";
+
+        doThrow(new IOException()).when(mockUserDAO).addUser(user);
+
+        ResponseEntity<String> response = userController.createUser(user);
+
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
+
+    @Test
     public void testGetAll() throws IOException {
         // Setup
         String[] users = new String[2];
