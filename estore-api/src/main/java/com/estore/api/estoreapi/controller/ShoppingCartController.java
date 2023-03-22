@@ -83,7 +83,7 @@ public class ShoppingCartController {
     }
 
     @DeleteMapping("/{username}")
-    public ResponseEntity<String> deleteProduct(@PathVariable String username) {
+    public ResponseEntity<String> deleteShoppingCart(@PathVariable String username) {
         LOG.info("DELETE /carts/" + username);
         try {
             boolean result = shoppingCartDAO.deleteShoppingCart(username);
