@@ -30,7 +30,7 @@ public class ProductController {
     private ProductDAO productDAO;
 
     /**
-     * Creates a REST API controller to reponds to requests
+     * Creates a REST API controller which responds to requests
      * 
      * @param productDAO The {@link ProductDAO Product Data Access Object} to
      *                   perform CRUD operations
@@ -107,7 +107,7 @@ public class ProductController {
     }
 
     /**
-     * Creates a product with the provided hero object
+     * Creates a product with the provided product object
      * 
      * @param product - The product to create
      * 
@@ -162,9 +162,9 @@ public class ProductController {
     }
 
     /**
-     * Deletes a {@linkplain Product hero} with the given id
+     * Deletes a {@linkplain Product product} with the given id
      * 
-     * @param id The id of the {@link Product hero} to deleted
+     * @param id The id of the {@link Product product} to deleted
      * 
      * @return ResponseEntity HTTP status of OK if deleted<br>
      *         ResponseEntity with HTTP status of NOT_FOUND if not found<br>
