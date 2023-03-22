@@ -52,7 +52,7 @@ Notify the customer when its time to order more food
 
 ## Application Domain
 
-![Domain Model](Domain Model.png)
+![Domain Model](Domain_Model.png)
 
 User: A user is a person who interacts with the e-store. 
 There are two types of users: 
