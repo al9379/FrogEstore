@@ -114,6 +114,8 @@ In the Model Tier of our application, its function is to retrieve and manipulate
 > and recommendations for further improvements. Where relevant, include 
 > screenshots from the tool and/or corresponding source code that was flagged._
 
+If the project were to continue, some design improvements that we would have implemented is better use of branches in github
+
 ## Testing
 
 ### Acceptance Testing
