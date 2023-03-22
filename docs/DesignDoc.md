@@ -29,12 +29,6 @@ N/A
 
 ## Requirements
 
-This section describes the features of the application.
-
-> _In this section you do not need to be exhaustive and list every
-> story.  Focus on top-level features from the Vision document and
-> maybe Epics and critical Stories._
-
 ### Definition of MVP
 Customers can buy frogs and admins can edit the inventory from which customers purchase.
 
