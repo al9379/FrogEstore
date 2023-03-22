@@ -89,6 +89,17 @@ public class ProductControllerTests {
     }
 
     @Test
+    public void testCreateProductHandleException() throws IOException {
+        Product product = new Product(1,10,15,"tree","poison");
+
+        doThrow(new IOException()).when(mockProductDAO).createProduct(product);
+
+        ResponseEntity<Product> response = productController.createProduct(product);
+
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
+
+    @Test
     public void testUpdateProduct() throws IOException{
         Product product = new Product(1,10,15,"tree","poison");
 
