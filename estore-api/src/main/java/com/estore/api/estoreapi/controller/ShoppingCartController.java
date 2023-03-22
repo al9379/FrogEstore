@@ -3,7 +3,6 @@ package com.estore.api.estoreapi.controller;
 import java.io.IOException;
 import java.util.logging.Level;
 
-import com.estore.api.estoreapi.model.Product;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;

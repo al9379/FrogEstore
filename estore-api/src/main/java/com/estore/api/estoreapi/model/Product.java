@@ -1,6 +1,5 @@
 package com.estore.api.estoreapi.model;
 
-import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Product {
