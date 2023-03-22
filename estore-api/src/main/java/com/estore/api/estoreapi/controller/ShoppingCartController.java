@@ -38,7 +38,7 @@ public class ShoppingCartController {
         LOG.info("GET /carts/" + username);
         try {
             ShoppingCart cart = this.shoppingCartDAO.getShoppingCart(username);
-            if (username != null)
+            if (cart != null)
                 return new ResponseEntity<ShoppingCart>(cart, HttpStatus.OK);
             else
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
