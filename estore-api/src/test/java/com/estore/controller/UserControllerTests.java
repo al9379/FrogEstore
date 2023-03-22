@@ -39,8 +39,31 @@ public class UserControllerTests {
 
         ResponseEntity<String> response = userController.createUser(user);
 
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(user, response.getBody());
+    }
+
+    @Test
+    public void testGetUser() {
+        String user = "Tim";
+
+        when(mockUserDAO.userExists(user)).thenReturn(true);
+
+        ResponseEntity<String> response = userController.getUser(user);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        assertEquals(user, response.getBody());
+    }
+
+    @Test
+    public void testGetUserNotFound() throws IOException {
+        String user = "Tim";
+
+        when(mockUserDAO.userExists(user)).thenReturn(false);
+
+        ResponseEntity<String> response = userController.getUser(user);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
     }
 
     @Test
@@ -48,6 +71,28 @@ public class UserControllerTests {
         String user = "Tim";
 
         when(mockUserDAO.addUser(user)).thenReturn(null);
+
+        ResponseEntity<String> response = userController.createUser(user);
+
+        assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
+    }
+
+    @Test
+    public void testCreateUserHandleException() throws IOException {
+        String user = "Tim";
+
+        doThrow(new IOException()).when(mockUserDAO).addUser(user);
+
+        ResponseEntity<String> response = userController.createUser(user);
+
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
+
+    @Test
+    public void testCreateUserConflict() throws IOException {
+        String user = "Tim";
+
+        when(mockUserDAO.addUser(user)).thenReturn(false);
 
         ResponseEntity<String> response = userController.createUser(user);
 

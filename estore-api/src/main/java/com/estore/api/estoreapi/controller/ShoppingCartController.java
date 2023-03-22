@@ -38,7 +38,7 @@ public class ShoppingCartController {
         LOG.info("GET /carts/" + username);
         try {
             ShoppingCart cart = this.shoppingCartDAO.getShoppingCart(username);
-            if (username != null)
+            if (cart != null)
                 return new ResponseEntity<ShoppingCart>(cart, HttpStatus.OK);
             else
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);
@@ -83,7 +83,7 @@ public class ShoppingCartController {
     }
 
     @DeleteMapping("/{username}")
-    public ResponseEntity<String> deleteProduct(@PathVariable String username) {
+    public ResponseEntity<String> deleteShoppingCart(@PathVariable String username) {
         LOG.info("DELETE /carts/" + username);
         try {
             boolean result = shoppingCartDAO.deleteShoppingCart(username);

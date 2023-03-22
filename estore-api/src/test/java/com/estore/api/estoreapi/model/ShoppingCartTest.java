@@ -14,9 +14,9 @@ class ShoppingCartTest {
     @Test
     public void getters() {
         String expectedUsername = "eli";
-        Product[] expectedProducts = new Product[]{};
+        int[] expectedProducts = new int[]{};
 
-        ShoppingCart cart = new ShoppingCart(expectedUsername);
+        ShoppingCart cart = new ShoppingCart(expectedUsername, new int[]{});
 
         assertEquals(expectedUsername, cart.getUsername());
         assertArrayEquals(expectedProducts, cart.getProducts());
@@ -25,9 +25,9 @@ class ShoppingCartTest {
     @Test
     public void setProducts() {
         String expectedUsername = "eli";
-        Product[] expectedProducts = new Product[]{new Product(1, 2, 3, "testProduct", "testDescription")};
+        int[] expectedProducts = new int[]{1};
 
-        ShoppingCart cart = new ShoppingCart(expectedUsername);
+        ShoppingCart cart = new ShoppingCart(expectedUsername, new int[]{});
 
         cart.setProducts(expectedProducts);
 

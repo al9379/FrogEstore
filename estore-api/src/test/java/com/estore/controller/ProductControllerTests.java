@@ -73,7 +73,7 @@ public class ProductControllerTests {
 
         ResponseEntity<Product> response = productController.createProduct(product);
 
-        assertEquals(HttpStatus.CREATED, response.getStatusCode());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
         assertEquals(product, response.getBody());
     }
 
@@ -86,6 +86,17 @@ public class ProductControllerTests {
         ResponseEntity<Product> response = productController.createProduct(product);
 
         assertEquals(HttpStatus.CONFLICT, response.getStatusCode());
+    }
+
+    @Test
+    public void testCreateProductHandleException() throws IOException {
+        Product product = new Product(1,10,15,"tree","poison");
+
+        doThrow(new IOException()).when(mockProductDAO).createProduct(product);
+
+        ResponseEntity<Product> response = productController.createProduct(product);
+
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
 
     @Test

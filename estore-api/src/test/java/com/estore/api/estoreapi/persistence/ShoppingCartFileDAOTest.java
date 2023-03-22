@@ -30,9 +30,9 @@ class ShoppingCartFileDAOTest {
     public void setupShoppingCartFileDAO() throws IOException {
         mockObjectMapper = mock(ObjectMapper.class);
         testCarts = new ShoppingCart[3];
-        testCarts[0] = new ShoppingCart("eli");
-        testCarts[1] = new ShoppingCart("dylan");
-        testCarts[2] = new ShoppingCart("alex");
+        testCarts[0] = new ShoppingCart("eli", new int[]{});
+        testCarts[1] = new ShoppingCart("dylan", new int[]{});
+        testCarts[2] = new ShoppingCart("alex", new int[]{});
 
         when(mockObjectMapper
                 .readValue(new File("test_file.txt"), ShoppingCart[].class))
@@ -61,7 +61,7 @@ class ShoppingCartFileDAOTest {
 
     @Test
     public void testUpdateShoppingCart() {
-        ShoppingCart cart = new ShoppingCart("dylan");
+        ShoppingCart cart = new ShoppingCart("dylan", new int[]{});
 
         boolean result = assertDoesNotThrow(() -> shoppingCartFileDAO.updateShoppingCart(cart),
                 "Unexpected exception thrown");
@@ -69,6 +69,13 @@ class ShoppingCartFileDAOTest {
         assertTrue(result);
         ShoppingCart actual = assertDoesNotThrow(() -> shoppingCartFileDAO.getShoppingCart(cart.getUsername()));
         assertEquals(cart, actual);
+    }
+
+    @Test
+    public void testDeleteShoppingCart() {
+        boolean result = assertDoesNotThrow(() -> shoppingCartFileDAO.deleteShoppingCart("dylan"));
+
+        assertTrue(result);
     }
 
     @Test
@@ -94,7 +101,7 @@ class ShoppingCartFileDAOTest {
 
     @Test
     public void testUpdateShoppingCartNotFound() {
-        ShoppingCart cart = new ShoppingCart("mason");
+        ShoppingCart cart = new ShoppingCart("mason", new int[]{});
 
         boolean result = assertDoesNotThrow(() -> shoppingCartFileDAO.updateShoppingCart(cart),
                 "Unexpected exception thrown");
