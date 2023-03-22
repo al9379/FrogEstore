@@ -52,7 +52,7 @@ Notify the customer when its time to order more food
 
 ## Application Domain
 
-![Domain Model](Domain_Model.png)
+![Domain Model](Domain Model.png)
 
 User: A user is a person who interacts with the e-store. 
 There are two types of users: 
@@ -94,34 +94,13 @@ with the e-store application.
 The application starts at a sign in window, this gives the choice for the user to sign in as an admin or make their account as a customer. If a customer signs in there a tabs available to logout, view the products, and to view their shopping cart. If an admin signs in, it shows a list that can be editted by either removing or adding items along with changing the item descriptions.
 
 ### View Tier
-> _Provide a summary of the View Tier UI of your architecture.
-> Describe the types of components in the tier and describe their
-> responsibilities.  This should be a narrative description, i.e. it has
-> a flow or "story line" that the reader can follow._
-
-> _You must also provide sequence diagrams as is relevant to a particular aspects 
-> of the design that you are describing.  For example, in e-store you might create a 
-> sequence diagram of a customer searching for an item and adding to their cart. 
-> Be sure to include an relevant HTTP reuqests from the client-side to the server-side 
-> to help illustrate the end-to-end flow._
-
+The home page provides an overview of the e-store, displaying navigation links to different parts of the store. It also includes a search bar, allowing customers to quickly find the products they are looking for. The product pages provide detailed information about each product, including product images, descriptions, pricing, and quantity. Customers can also use product pages to add products to their cart. The shopping cart allows customers to view the items they have added to their cart, modify quantities or remove items, and proceed to checkout when ready.
 
 ### ViewModel Tier
-> _Provide a summary of this tier of your architecture. This
-> section will follow the same instructions that are given for the View
-> Tier above._
-
-> _At appropriate places as part of this narrative provide one or more
-> static models (UML class diagrams) with some details such as critical attributes and methods._
-
+The ViewModel Tier is responsible for handling user interactions and updating the view based off the user interactions. The ViewModel contains properties for the list of products and cart items, as well as methods for retrieving product data and updating the shopping cart.
 
 ### Model Tier
-> _Provide a summary of this tier of your architecture. This
-> section will follow the same instructions that are given for the View
-> Tier above._
-
-> _At appropriate places as part of this narrative provide one or more
-> static models (UML class diagrams) with some details such as critical attributes and methods._
+In the Model Tier of our application, its function is to retrieve and manipulate data. This is used so that information for users can be saved and accessed again. When admins add, remove, or update a product the Model Tier mainpulates the data based off what the admin requested.
 
 ### Static Code Analysis/Design Improvements
 > _Discuss design improvements that you would make if the project were
@@ -136,8 +115,6 @@ The application starts at a sign in window, this gives the choice for the user t
 > screenshots from the tool and/or corresponding source code that was flagged._
 
 ## Testing
-> _This section will provide information about the testing performed
-> and the results of the testing._
 
 ### Acceptance Testing
 > _Report on the number of user stories that have passed all their
