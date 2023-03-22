@@ -1,0 +1,5 @@
+estore-api/src/test/java/com/estore/api/estoreapi/controller/ProductControllerTests.java
+estore-api/src/test/java/com/estore/api/estoreapi/controller/UserControllerTests.java
+estore-ui/node_modules/
+estore-ui/.angular/cache/15.2.0/
+estore-ui/dist/template/
