@@ -91,4 +91,39 @@ public class ShoppingCartControllerTests {
 
         assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
     }
+
+    @Test
+    public void testUpdateShoppingCart() throws IOException {
+        ShoppingCart cart = new ShoppingCart("Eli", new int[]{1,2});
+
+        when(mockShoppingCartDAO.updateShoppingCart(cart)).thenReturn(true);
+
+        cart.setProducts(new int[]{5});
+
+        ResponseEntity<String> response = shoppingCartController.updateCart(cart);
+
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+    }
+
+    @Test
+    public void testUpdateShoppingCartNotFound() throws IOException {
+        ShoppingCart cart = new ShoppingCart("Eli", new int[]{1,2});
+
+        when(mockShoppingCartDAO.updateShoppingCart(cart)).thenReturn(false);
+
+        ResponseEntity<String> response = shoppingCartController.updateCart(cart);
+
+        assertEquals(HttpStatus.NOT_FOUND, response.getStatusCode());
+    }
+
+    @Test
+    public void testUpdateShppingCartHandleException() throws IOException {
+        ShoppingCart cart = new ShoppingCart("Eli", new int[]{1,2});
+
+        doThrow(new IOException()).when(mockShoppingCartDAO).updateShoppingCart(cart);
+
+        ResponseEntity<String> response = shoppingCartController.updateCart(cart);
+
+        assertEquals(HttpStatus.INTERNAL_SERVER_ERROR, response.getStatusCode());
+    }
 }
