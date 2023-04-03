@@ -73,7 +73,7 @@ public class UserControllerTests {
     public void testCreateUserFailed() throws IOException{
         String user = "Tim";
 
-        when(mockUserDAO.addUser(user)).thenReturn(null);
+        when(mockUserDAO.addUser(user)).thenReturn(false);
 
         ResponseEntity<String> response = userController.createUser(user);
 
