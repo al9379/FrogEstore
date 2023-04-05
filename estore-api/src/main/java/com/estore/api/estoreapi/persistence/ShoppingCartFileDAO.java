@@ -87,4 +87,11 @@ public class ShoppingCartFileDAO implements ShoppingCartDAO{
         save();
         return true;
     }
+
+    @Override
+    public ShoppingCart[] getAll() throws IOException {
+        ShoppingCart[] ret = new ShoppingCart[shoppingCartMap.size()];
+        return this.shoppingCartMap.values().toArray(ret);
+    }
+
 }
