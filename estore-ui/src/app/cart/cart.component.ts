@@ -37,7 +37,7 @@ export class CartComponent {
           }
         }
         cart.products=this.products.map(product => product.id);
-        this.cartService.updateCart(cart);
+        this.cartService.updateCart(cart).subscribe();
       });
     }
   }

@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
 @Injectable({ providedIn: 'root' })
 export class ProductService {
 
-  private productsUrl = 'http://localhost:8080/products';  // URL to web api
+  private productsUrl ='http://'+window.location.hostname+':8080/products';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

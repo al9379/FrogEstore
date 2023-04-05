@@ -8,7 +8,7 @@ import { catchError, map, tap } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class UserService {
-  private usersUrl = 'http://localhost:8080/users';  // URL to web api
+  private usersUrl ='http://'+window.location.hostname+':8080/users';  // URL to web api 
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
