@@ -35,7 +35,7 @@ export class StoreComponent implements OnInit{
         this.products = this.allProducts;
       }
     });
-  } 
+  }
 
   addToCart(id: number) : void {
     let user = localStorage.getItem('username');
@@ -48,5 +48,14 @@ export class StoreComponent implements OnInit{
     } else {
       this.router.navigate(['login']);
     }
-  }  
+  }
+
+  addReview(reviewText : string, id : number) : void {
+    if (reviewText.length == 0) return;
+    this.productService.getProduct(id).subscribe(product => {
+      product.reviews.push(reviewText)
+      console.log(product.reviews)
+      this.productService.updateProduct(product).subscribe();
+    });
+  }
 }

@@ -1,9 +1,7 @@
 package com.estore.api.estoreapi.controller;
 
 import java.io.IOException;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Level;
 
@@ -184,7 +182,7 @@ public class ProductController {
         LOG.info("DELETE /products/" + id);
         try {
             boolean result = productDAO.deleteProduct(id);
-            if (result == true) {
+            if (result) {
                 for (ShoppingCart cart : shoppingCartDAO.getAll()) {
                     int[] oldcart = cart.getProducts();
                     List<Integer> newcart = new ArrayList<>();
