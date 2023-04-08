@@ -20,7 +20,7 @@ export class AppComponent {
     if (localStorage.getItem('username')!=undefined) {
       return "Hello " + localStorage.getItem('username');
     } else {
-      return "Login required";
+      return "";
     }
   }
 }
