@@ -1,8 +1,10 @@
 <div *ngIf="loggedIn==false">
-    <label for="username">Username: </label>
-    <input id="username" #usernameEntry/>
-
-    <button type="button" (click)="login(usernameEntry.value)">Login</button>
+    <div class = "center">
+        <h1>Log In</h1>
+        <input id="username" #usernameEntry/>
+        <button type="button" (click)="login(usernameEntry.value)">Continue</button>
+    </div>
+    
 </div>
 
 <div *ngIf="loggedIn==true">
