@@ -14,6 +14,7 @@ import { MessagesComponent } from './messages/messages.component';
 import { StoreComponent } from './store/store.component';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
+import { CheckoutComponent } from './checkout/checkout.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { CartComponent } from './cart/cart.component';
     StoreComponent,
     LoginComponent,
     CartComponent,
+    CheckoutComponent,
   ],
   bootstrap: [ AppComponent ]
 })

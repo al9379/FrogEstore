@@ -1,10 +1,13 @@
-<div class="products-menu">
-  Checkout
-  <a class="products" *ngFor="let product of products">
+<div class="products-menu" *ngIf="!checkEmptyCart()">
+  Items to purchase
+  <li class="products" *ngFor="let product of products">
     {{product.name}}: ${{product.price}}
-  </a>
+  </li>
   <a class="checkout-info">
-    Total: ${{total}}
+    Total: ${{total.valueOf()}}
   </a>
   <button type="button" class="checkout-button" (click)="checkout()">Purchase order</button>
+</div>
+<div class="products-menu" *ngIf="checkEmptyCart()">
+  There are no items in your cart.
 </div>
