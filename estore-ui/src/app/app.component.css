@@ -14,13 +14,10 @@ h1 {
   left:50%;
 }
 
-
-
 nav {
-  width: 10%;
   display: block;
-  margin-left:auto;
-  margin-right:auto;
+  margin: auto;
+  text-align: center;
 }
 
 nav a {
@@ -41,6 +38,7 @@ nav a:hover {
   color: rgb(255, 255, 255);
   background-color: #42545C;
 }
+
 nav a:active {
   background-color: black;
 }
