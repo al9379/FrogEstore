@@ -55,11 +55,18 @@ export class StoreComponent implements OnInit{
   }
 
   addReview(reviewText : string, id : number) : void {
-    if (reviewText.length == 0) return;
-    this.productService.getProduct(id).subscribe(product => {
-      product.reviews.push(reviewText)
-      console.log(product.reviews)
-      this.productService.updateProduct(product).subscribe();
-    });
+    reviewText = reviewText.trim();
+    if(reviewText.length == 0) return;
+    let user = localStorage.getItem('username');
+    if(typeof user == 'string') {
+      this.productService.getProduct(id).subscribe(product => {
+        product.reviews.push(user + " said: " + reviewText)
+        console.log(product.reviews)
+        this.productService.updateProduct(product).subscribe();
+      });
+    }
+    else {
+      this.router.navigate(['login']);
+    }
   }
 }
