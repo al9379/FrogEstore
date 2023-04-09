@@ -1,0 +1,10 @@
+<div class="products-menu">
+  Checkout
+  <a class="products" *ngFor="let product of products">
+    {{product.name}}: ${{product.price}}
+  </a>
+  <a class="checkout-info">
+    Total: ${{total}}
+  </a>
+  <button type="button" class="checkout-button" (click)="checkout()">Purchase order</button>
+</div>
