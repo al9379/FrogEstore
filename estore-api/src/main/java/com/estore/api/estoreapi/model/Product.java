@@ -87,10 +87,18 @@ public class Product {
      */
     public void setDescription(String description) {this.description = description;}
 
+    /**
+     * Retrieves the reviews of the product
+     * @return reviews of the product
+     */
     public String[] getReviews() {
         return reviews;
     }
 
+    /**
+     * Sets the reviews of the product
+     * @param reviews reviews of the product
+     */
     public void setReviews(String[] reviews) {
         this.reviews = reviews;
     }
