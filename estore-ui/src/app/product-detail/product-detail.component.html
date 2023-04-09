@@ -1,14 +1,21 @@
 <div *ngIf="product">
-  <h2>{{product.name | uppercase}} Details</h2>
-  <div><span>id: </span>{{product.id}}</div>
-  <div>
-    <label for="product-name">product name: </label>
+  <h2>{{product.name | uppercase}}</h2>
+  <div id="details">
+    <label for="product-name">Product Name: </label>
     <input id="product-name" [(ngModel)]="product.name" placeholder="product name"/>
-    <label for="product-price">product price: </label>
+
+
+    <label for="product-price">Product Price: </label>
     <input id="product-price" [(ngModel)]="product.price" placeholder="product price"/>
-    <label for="product-description">product descrption: </label>
-    <input id="product-description" [(ngModel)]="product.description" placeholder="product description"/>
+
+    <label for="product-description">Product Descrption: </label>
+    <br/>
+    <textarea id = "product-description" [(ngModel)]="product.description" placeholder="product description" 
+    rows = "10" cols = "55"></textarea>
+
+    <div id ="buttons">
+      <button type="button" (click)="goBack()">Return</button>
+      <button type="button" (click)="save()">Save</button>
+    </div>
   </div>
-  <button type="button" (click)="goBack()">go back</button>
-  <button type="button" (click)="save()">save</button>
 </div>

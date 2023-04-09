@@ -8,6 +8,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 70vh;
 }
 
 h1 {
@@ -27,4 +28,6 @@ input {
 
 button{
   margin-top: 10px;
+  font-family: myFont;
+  font-size: 20px;
 }
