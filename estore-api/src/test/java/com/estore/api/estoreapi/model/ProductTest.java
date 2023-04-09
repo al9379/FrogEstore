@@ -1,9 +1,11 @@
 package com.estore.api.estoreapi.model;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestTemplate;
 
 /**
  * The unit tests for the Product class
@@ -93,6 +95,21 @@ public class ProductTest {
    }
 
    @Test
+   public void testGetReviews(){
+       int id = 99;
+       int stock = 200;
+       float price = 19.99f;
+       String name = "Freddy Frog";
+       String description = "A very famous frog";
+       String[] reviews = new String[]{"This is a review"};
+       Product product = new Product(id,stock,price,name,description);
+
+       product.setReviews(reviews);
+
+       assertArrayEquals(product.getReviews(), reviews);
+   }
+
+    @Test
    public void testToString(){
         int id = 99;
         int stock = 200;
