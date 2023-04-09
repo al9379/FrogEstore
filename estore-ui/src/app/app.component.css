@@ -1,7 +1,15 @@
 /* AppComponent's private CSS styles */
+@font-face {
+  font-family: myFont;
+  src: url(Frog.otf);
+}
+
 h1 {
   margin-bottom: 0;
+  font-family: myFont;
+  color:#3d683c;
 }
+
 nav a {
   padding: 1rem;
   text-decoration: none;
@@ -12,6 +20,7 @@ nav a {
   border-radius: 4px;
   margin-left: auto;
   margin-right: auto;
+  font-family: myFont;
 }
 
 nav a:hover {

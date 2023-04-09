@@ -3,22 +3,6 @@
   src: url(Frog.otf);
 }
 
-.products {
-  margin: 0 0 2em 0;
-  list-style-type: none;
-  padding: 0;
-  width: 15em;
-}
-
-.products li {
-  position: relative;
-  cursor: pointer;
-}
-
-.products li:hover {
-  left: .1em;
-}
-
 .center{
   display: flex;
   flex-direction: column;
