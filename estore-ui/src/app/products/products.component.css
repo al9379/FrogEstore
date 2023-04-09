@@ -1,17 +1,55 @@
 /* productsComponent's private CSS styles */
+
+@font-face {
+  font-family: myFont;
+  src: url(Frog.otf);
+}
+
 .products {
-  margin: 0 0 2em 0;
+  display: block;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
   list-style-type: none;
   padding: 0;
   width: 15em;
 }
 
+h2 {
+  font-size: xxx-large;
+  border: #2c3a41;
+  font-family: myFont;
+  display: block;
+  width:100%;
+  text-align: center;
+}
+
+div {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:50%;
+}
+
 input {
   display: block;
+  text-align: center;
   width: 100%;
   padding: .5rem;
   margin: 1rem 0;
   box-sizing: border-box;
+  font-family: myFont;
+  font-size: large;
+}
+
+label {
+  font-size:xx-large;
+  font-family: myFont;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:50%;
+  text-align: center;
 }
 
 .products li {
@@ -34,6 +72,7 @@ input {
   display: block;
   width: 100%;
 }
+
 
 .products a:hover {
   color: #2c3a41;
@@ -66,6 +105,10 @@ input {
  padding: .5rem 1.5rem;
  font-size: 1rem;
  margin-bottom: 2rem;
+ display: block;
+ margin-left: auto;
+ margin-right: auto;
+ font-family: myFont;
 }
 
 .add-button:hover {

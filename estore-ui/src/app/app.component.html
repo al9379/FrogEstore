@@ -1,6 +1,6 @@
 <h1>{{title}}</h1>
 <nav>
-  <a *ngIf="loggedIn()&&!admin()" routerLink="/login">{{userBanner()}}</a>
+  <a *ngIf="loggedIn()" routerLink="/login">{{userBanner()}}</a>
   <a *ngIf="loggedIn()&&!admin()" routerLink="/store">Store</a>
   <a *ngIf="loggedIn()&&!admin()" routerLink="/cart">Shopping Cart</a>
   <a *ngIf="admin()" routerLink="/products">Edit Products</a>
