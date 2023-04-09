@@ -1,8 +1,15 @@
 <div class="products-menu">
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" />
+  <input placeholder="Search" #searchBox id="search-box" (input)="search(searchBox.value)" />
   <a class="products" *ngFor="let product of products">
-    <a class="product-info">
-      {{product.name}} : ${{product.price}}
+    <img src="assets/main-frog.png">
+    <a class="product-name">
+      {{product.name}} 
+    </a>
+    <a class="product-price">
+      ${{product.price}}
+    </a>
+    <a class="product-description">
+      {{product.description}} 
     </a>
     <button type="button" class="add-button" (click)="addToCart(product.id);">
     Add To Cart

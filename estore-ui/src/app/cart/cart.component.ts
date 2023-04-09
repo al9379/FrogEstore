@@ -11,6 +11,7 @@ import { ProductService } from '../product.service';
 })
 export class CartComponent {
   products: Product[] = [];
+  productCount: Product[] = []; 
 
   constructor(private productService: ProductService, private router: Router, private cartService: CartService) { }
 
@@ -21,6 +22,14 @@ export class CartComponent {
       cart.products.forEach(id => {
         this.productService.getProduct(id).subscribe(product => {
           this.products.push(product);
+          let cexists = this.productCount.find(p => p.id == product.id);
+          if (cexists) {
+            cexists.stock += 1;
+          } else {
+            cexists = product;
+            cexists.stock = 1;
+            this.productCount.push(cexists);
+          }
         })
       });
     });
@@ -37,8 +46,32 @@ export class CartComponent {
           }
         }
         cart.products=this.products.map(product => product.id);
-        this.cartService.updateCart(cart);
+        let edited = this.productCount.find(p => p.id == id);
+        if (edited) {
+          edited.stock -= 1;
+          if (edited.stock==0) {
+            this.productCount = this.productCount.filter(p => p.id != id);
+          }
+        }
+        this.cartService.updateCart(cart).subscribe(cart => {
+        });
       });
+    }
+  }
+
+  addToCart(id: number) : void {
+    let user = localStorage.getItem('username');
+    if (typeof user=='string') {
+      this.cartService.getCart(user).subscribe(cart => {
+        cart.products.push(id);
+        
+        this.cartService.updateCart(cart).subscribe(_ => {
+          let exists = this.productCount.find(p => p.id == id) || {stock : 0};
+          exists.stock += 1;
+        });
+      });
+    } else {
+      this.router.navigate(['login']);
     }
   }
 }
