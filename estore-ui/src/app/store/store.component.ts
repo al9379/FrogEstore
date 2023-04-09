@@ -58,10 +58,11 @@ export class StoreComponent implements OnInit{
     reviewText = reviewText.trim();
     if(reviewText.length == 0) return;
     let user = localStorage.getItem('username');
+    let existing = this.products.find(product => product.id == id)
+    if (existing) existing.reviews.push(`${user} said: ${reviewText}`);
     if(typeof user == 'string') {
       this.productService.getProduct(id).subscribe(product => {
         product.reviews.push(user + " said: " + reviewText)
-        console.log(product.reviews)
         this.productService.updateProduct(product).subscribe();
       });
     }
