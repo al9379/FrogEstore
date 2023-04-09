@@ -12,11 +12,13 @@
   font-family: myFont;
 }
 
+
 .products {
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 15em;
+  margin-top: 4%;
 }
 
 .products img {
@@ -25,6 +27,7 @@
   margin-right: auto;
   display: block;
 }
+
 
 input {
   display: block;
