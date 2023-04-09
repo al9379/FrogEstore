@@ -14,7 +14,11 @@ export class StoreComponent implements OnInit{
   products: Product[] = [];
   allProducts: Product[] = [];
 
-  constructor(private productService: ProductService, private router: Router, private cartService: CartService) { }
+  constructor(
+    private productService: ProductService,
+    private router: Router,
+    private cartService: CartService,
+  ) { }
 
   ngOnInit(): void {
     this.productService.getProducts().subscribe(products => {
