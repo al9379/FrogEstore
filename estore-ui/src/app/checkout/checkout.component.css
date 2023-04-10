@@ -1,0 +1,39 @@
+@font-face {
+  font-family: myFont;
+  src: url(Frog.otf);
+}
+
+.products-menu {
+  margin-top: 1%;
+  text-align: center;
+  display: block;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: myFont;
+  font-size: large;
+  list-style-type: none;
+}
+
+.checkout-info {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    padding: 2%;
+    width: 5%;
+    border-radius: 2%;
+    background-color:#3d683c;
+    display: block;
+    text-align: center;
+}
+
+.checkout-button {
+    margin-top: 2%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 2%;
+    display: block;
+    text-align: center;
+
+}

@@ -32,3 +32,34 @@ button{
   font-family: myFont;
   font-size: 20px;
 }
+
+#l1{
+    position:absolute ;
+    width:10%;
+    height:10%;
+    top:45%;
+    left:45%;
+    animation:expand 5s infinite;
+    z-index: -2;
+}
+#l2{
+    position:absolute ;
+    width:10%;
+    height:10%;
+    top:45%;
+    left:45%;
+    animation:expand 5s infinite 2.5s;
+    z-index: -1;
+    opacity: 0;
+}
+
+@keyframes expand {
+  0% {
+    transform: scale(100);
+    opacity: 0;
+  } 
+  100% {
+    transform: scale(0);
+    opacity: 0.2;
+  } 
+}

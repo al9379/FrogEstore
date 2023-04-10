@@ -14,11 +14,28 @@
 
 
 .products {
-  margin: 0 0 2em 0;
+  margin-top: 4%;
   list-style-type: none;
   padding: 0;
   width: 15em;
   margin-top: 4%;
+  text-align: center;
+}
+
+.products-menu label {
+  margin-top: 3%;
+  font-size: large;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.products #new-review {
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 .products img {
