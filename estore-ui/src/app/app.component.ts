@@ -18,9 +18,9 @@ export class AppComponent {
 
   userBanner() :string{
     if (localStorage.getItem('username')!=undefined) {
-      return "Hello " + localStorage.getItem('username');
+      return "" + localStorage.getItem('username');
     } else {
-      return "Login required";
+      return "";
     }
   }
 }

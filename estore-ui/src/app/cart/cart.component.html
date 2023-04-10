@@ -1,8 +1,25 @@
 <div class="products-menu">
-  <a class="products" *ngFor="let product of products">
-      {{product.name}}
+  <a class="products" *ngFor="let product of productCount">
+    <img src="assets/main-frog.png">
+    <a class="product-name">
+      {{product.name}} 
+    </a>
+    <a class="product-price">
+      ${{product.price}}
+    </a>
+    <a class="product-description">
+      {{product.description}} 
+    </a>
+    <a class="product-stock">
+      {{product.stock}} in cart
+    </a>
+
     <button type="button" class="remove-button" (click)="removeFromCart(product.id);">
-    Remove from cart
+    -
     </button>
+    <button type="button" class="add-button" (click)="addToCart(product.id);">
+    +
+    </button>
+
   </a>
 </div>

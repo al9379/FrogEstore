@@ -1,11 +1,12 @@
 <h1>{{title}}</h1>
-<h2>{{userBanner()}}</h2>
 <nav>
-  <a routerLink="/login">Login</a>
+  <a *ngIf="loggedIn()&&!admin()" routerLink="/login">{{userBanner()}}</a>
   <a *ngIf="loggedIn()&&!admin()" routerLink="/store">Store</a>
   <a *ngIf="loggedIn()&&!admin()" routerLink="/cart">Shopping Cart</a>
   <a *ngIf="loggedIn()&&!admin()" routerLink="/checkout">Checkout</a>
+  <a *ngIf="admin()" routerLink="/login">admin</a>
   <a *ngIf="admin()" routerLink="/products">Edit Products</a>
+
 </nav>
 <router-outlet></router-outlet>
 <!--<app-messages></app-messages>-->

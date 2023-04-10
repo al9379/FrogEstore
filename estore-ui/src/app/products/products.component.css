@@ -1,17 +1,49 @@
 /* productsComponent's private CSS styles */
+@font-face {
+  font-family: myFont;
+  src: url(Frog.otf);
+}
+
 .products {
+  font-family: myFont;
   margin: 0 0 2em 0;
   list-style-type: none;
   padding: 0;
   width: 15em;
 }
 
+h2 {
+  font-size: xxx-large;
+  border: #2c3a41;
+  font-family: myFont;
+  display: block;
+  width:100%;
+  text-align: center;
+}
+
+div {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width:50%;
+}
+
 input {
   display: block;
-  width: 100%;
+  width: 60%;
   padding: .5rem;
   margin: 1rem 0;
   box-sizing: border-box;
+  font-family: myFont;
+  font-size: large;
+}
+
+label {
+  font-size:xx-large;
+  font-family: myFont;
+  display: block;
+  width:50%;
+  text-align: center;
 }
 
 .products li {
@@ -27,13 +59,16 @@ input {
   color: #333;
   text-decoration: none;
   background-color: #EEE;
-  margin: .5em;
+  margin: .2em;
   padding: .3em 0;
   height: 1.6em;
   border-radius: 4px;
   display: block;
   width: 100%;
+  font-size: 20px;
+  text-align: center;
 }
+
 
 .products a:hover {
   color: #2c3a41;
@@ -45,38 +80,22 @@ input {
   color: #fafafa;
 }
 
-.products .badge {
-  display: inline-block;
-  font-size: small;
-  color: white;
-  padding: 0.8em 0.7em 0 0.7em;
-  background-color: #405061;
-  line-height: 1em;
-  position: relative;
-  left: -1px;
-  top: -4px;
-  height: 1.8em;
-  min-width: 16px;
-  text-align: right;
-  margin-right: .8em;
-  border-radius: 4px 0 0 4px;
-}
-
 .add-button {
- padding: .5rem 1.5rem;
- font-size: 1rem;
- margin-bottom: 2rem;
+  font-family: myFont;
+  padding: .5rem 1.5rem;
+  font-size: 20px;
+  margin: auto;
 }
 
 .add-button:hover {
   color: white;
-  background-color: #42545C;
+  background-color: #3d683c;
 }
 
 button.delete {
   position: absolute;
   left: 210px;
-  top: 5px;
+  top: 7px;
   background-color: white;
   color:  #525252;
   font-size: 1.1rem;
@@ -85,6 +104,31 @@ button.delete {
 }
 
 button.delete:hover {
-  background-color: #525252;
+  background-color: #3d683c;
   color: white;
+}
+
+label{
+  font-family: myFont;
+  color: white;
+  text-shadow: -1px 1px 2px #3d683c, 1px 1px 2px #3d683c, 1px -1px 0 #3d683c, -1px -1px 0 #3d683c;
+  font-size: 20px;
+}
+
+h2{
+  font-family: myFont;
+  color: white;
+  text-shadow: -1px 1px 2px #3d683c, 1px 1px 2px #3d683c, 1px -1px 0 #3d683c, -1px -1px 0 #3d683c;
+  font-size: 30px;
+}
+
+textarea{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#wrap{
+  display: flex;
+  gap: 20rem;
+  justify-content: center;
+  align-items:center;
 }

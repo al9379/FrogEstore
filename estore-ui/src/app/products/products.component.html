@@ -1,26 +1,37 @@
 
-<h2>New product</h2>
-<div>
-  <label for="new-product-name">Product name: </label>
-  <input id="new-product-name" #productName />
-  <label for="new-product-price">Price: </label>
-  <input id="new-product-price" #productPrice  type="number"/>
-  <label for="new-product-name">Description: </label>
-  <input id="new-product-name" #productDescription />
-
-  <!-- (click) passes input value to add() and then clears the input -->
-  <button type="button" class="add-button" (click)="add(productName.value, productPrice.value, productDescription.value); productName.value='';productPrice.value='';productDescription.value=''">
-    Add product
-  </button>
+<div id = "wrap">
+  <div>
+    <h2>Add a New Product</h2>
+    <div>
+      <label for="new-product-name">Product Name: </label>
+      <input id="new-product-name" #productName />
+      <label for="new-product-price">Price: </label>
+      <input id="new-product-price" #productPrice  type="number"/>
+      <label for="new-product-description">Description: </label>
+      <br/>
+      <textarea id = "new-product-description" #productDescription rows = "10" cols = "55"></textarea> 
+      <br/>
+  
+  
+      <!-- (click) passes input value to add() and then clears the input -->
+      <button type="button" class="add-button" (click)="add(productName.value, productPrice.value, productDescription.value); productName.value=''">
+        Add Product
+      </button>
+    </div>
+  </div>
+  
+  
+  <div>
+    <h2>Edit Products</h2>
+    <ul class="products">
+      <li *ngFor="let product of products">
+        <a routerLink="/detail/{{product.id}}">
+          {{product.name}}
+        </a>
+        <button type="button" class="delete" title="delete product"
+          (click)="delete(product)">x</button>
+      </li>
+    </ul>
+  </div>
+  
 </div>
-
-<h2>Edit products</h2>
-<ul class="products">
-  <li *ngFor="let product of products">
-    <a routerLink="/detail/{{product.id}}">
-      <span class="badge">{{product.id}}</span> {{product.name}}
-    </a>
-    <button type="button" class="delete" title="delete product"
-      (click)="delete(product)">x</button>
-  </li>
-</ul>

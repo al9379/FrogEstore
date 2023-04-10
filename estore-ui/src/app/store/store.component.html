@@ -1,8 +1,15 @@
 <div class="products-menu">
-  <input #searchBox id="search-box" (input)="search(searchBox.value)" placeholder="Search">
+  <input placeholder="Search" #searchBox id="search-box" (input)="search(searchBox.value)" />
   <a class="products" *ngFor="let product of products">
-    <a class="product-info">
-      {{product.name}}: ${{product.price}}: {{product.description}}
+    <img src="assets/main-frog.png">
+    <a class="product-name">
+      {{product.name}} 
+    </a>
+    <a class="product-price">
+      ${{product.price}}
+    </a>
+    <a class="product-description">
+      {{product.description}} 
     </a>
     Reviews:
     <a class="reviews" *ngFor="let review of product.reviews">
