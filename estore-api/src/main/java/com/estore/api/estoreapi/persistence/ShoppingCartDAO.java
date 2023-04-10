@@ -32,4 +32,6 @@ public interface ShoppingCartDAO {
     boolean updateShoppingCart(ShoppingCart shoppingCart) throws IOException;
 
     boolean deleteShoppingCart(String username) throws IOException;
+
+    ShoppingCart[] getAll() throws IOException;
 }

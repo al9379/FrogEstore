@@ -9,7 +9,7 @@ import { Cart } from './cart';
   providedIn: 'root'
 })
 export class CartService {
-  private cartsUrl = 'http://localhost:8080/carts';  // URL to web api
+  private cartsUrl = 'http://'+window.location.hostname+':8080/carts';  // URL to web api
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })

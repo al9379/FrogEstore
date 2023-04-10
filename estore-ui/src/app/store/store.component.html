@@ -11,8 +11,14 @@
     <a class="product-description">
       {{product.description}} 
     </a>
-    <button type="button" class="add-button" (click)="addToCart(product.id);">
-    Add To Cart
+    Reviews:
+    <a class="reviews" *ngFor="let review of product.reviews">
+      {{review}}
+    </a>
+    <input id="new-review" #reviewToAdd placeholder="Enter review here">
+    <button type="button" class="add-button" (click)="addReview(reviewToAdd.value, product.id); reviewToAdd.value=''">
+      Add Review
     </button>
+    <button type="button" class="add-button" (click)="addToCart(product.id);">Add To Cart</button>
   </a>
 </div>

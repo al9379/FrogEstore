@@ -1,6 +1,8 @@
 package com.estore.api.estoreapi.controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 
 import org.springframework.http.HttpStatus;
@@ -16,7 +18,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.estore.api.estoreapi.model.Product;
+import com.estore.api.estoreapi.model.ShoppingCart;
 import com.estore.api.estoreapi.persistence.ProductDAO;
+import com.estore.api.estoreapi.persistence.ShoppingCartDAO;
+
 import java.util.logging.Logger;
 
 /**
@@ -28,6 +33,7 @@ import java.util.logging.Logger;
 public class ProductController {
     private static final Logger LOG = Logger.getLogger(ProductController.class.getName());
     private ProductDAO productDAO;
+    private ShoppingCartDAO shoppingCartDAO;
 
     /**
      * Creates a REST API controller which responds to requests
@@ -35,8 +41,9 @@ public class ProductController {
      * @param productDAO The {@link ProductDAO Product Data Access Object} to
      *                   perform CRUD operations
      */
-    public ProductController(ProductDAO productDAO) {
+    public ProductController(ProductDAO productDAO, ShoppingCartDAO shoppingCartDAO) {
         this.productDAO = productDAO;
+        this.shoppingCartDAO = shoppingCartDAO;
     }
 
     /**
@@ -175,7 +182,20 @@ public class ProductController {
         LOG.info("DELETE /products/" + id);
         try {
             boolean result = productDAO.deleteProduct(id);
-            if (result == true) {
+            if (result) {
+                for (ShoppingCart cart : shoppingCartDAO.getAll()) {
+                    int[] oldcart = cart.getProducts();
+                    List<Integer> newcart = new ArrayList<>();
+                    for (int i : oldcart) {
+                        if (i != id) {
+                            newcart.add(i);
+                        }
+                    }
+                    int[] newArr = new int[newcart.size()];
+                    for(int i = 0; i < newcart.size(); i++) newArr[i] = newcart.get(i);
+                    cart.setProducts(newArr);
+                    shoppingCartDAO.updateShoppingCart(cart);
+                }
                 return new ResponseEntity<>(HttpStatus.OK);
             } else {
                 return new ResponseEntity<>(HttpStatus.NOT_FOUND);

@@ -7,9 +7,10 @@ import static org.mockito.Mockito.when;
 
 import java.io.IOException;
 
+import com.estore.api.estoreapi.model.ShoppingCart;
 import com.estore.api.estoreapi.persistence.ProductDAO;
 
-import net.bytebuddy.agent.VirtualMachine.ForHotSpot.Connection.Response;
+import com.estore.api.estoreapi.persistence.ShoppingCartDAO;
 
 import com.estore.api.estoreapi.controller.ProductController;
 import com.estore.api.estoreapi.model.Product;
@@ -28,11 +29,13 @@ import org.springframework.http.ResponseEntity;
 public class ProductControllerTests {
     private ProductController productController;
     private ProductDAO mockProductDAO;
+    private ShoppingCartDAO mockShoppingCartDAO;
 
     @BeforeEach
     public void setupProductController(){
         mockProductDAO = mock(ProductDAO.class);
-        productController = new ProductController(mockProductDAO);
+        mockShoppingCartDAO = mock(ShoppingCartDAO.class);
+        productController = new ProductController(mockProductDAO, mockShoppingCartDAO);
     }
 
     @Test
@@ -206,8 +209,12 @@ public class ProductControllerTests {
     public void testDeleteProduct() throws IOException { 
         // Setup
         int productId = 1;
-        
+
         when(mockProductDAO.deleteProduct(productId)).thenReturn(true);
+
+        ShoppingCart cart = new ShoppingCart("eli", new int[]{});
+
+        when(mockShoppingCartDAO.getAll()).thenReturn(new ShoppingCart[]{cart});
 
         ResponseEntity<Product> response = productController.deleteProduct(productId);
 

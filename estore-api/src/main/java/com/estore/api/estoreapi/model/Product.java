@@ -8,6 +8,7 @@ public class Product {
     @JsonProperty("price") private float price;
     @JsonProperty("name") private String name;
     @JsonProperty("description") private String description;
+    @JsonProperty("reviews") private String[] reviews;
 
     /**
      * Create a product with the given attributes
@@ -29,6 +30,7 @@ public class Product {
         this.price = price;
         this.name = name;
         this.description = description;
+        this.reviews = new String[]{};
     }
 
     /**
@@ -39,7 +41,7 @@ public class Product {
 
     /**
      * Sets the name of the product
-     * @param name
+     * @param name the name of the product
      */
     public void setName(String name) {this.name = name;}
 
@@ -84,6 +86,22 @@ public class Product {
      * @param description description of the product
      */
     public void setDescription(String description) {this.description = description;}
+
+    /**
+     * Retrieves the reviews of the product
+     * @return reviews of the product
+     */
+    public String[] getReviews() {
+        return reviews;
+    }
+
+    /**
+     * Sets the reviews of the product
+     * @param reviews reviews of the product
+     */
+    public void setReviews(String[] reviews) {
+        this.reviews = reviews;
+    }
 
     /**
      * {@inheritDoc}

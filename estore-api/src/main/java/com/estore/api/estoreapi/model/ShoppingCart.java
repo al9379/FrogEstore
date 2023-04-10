@@ -34,10 +34,11 @@ public class ShoppingCart {
 
     /**
      * Sets the array of products
-     * @param int the new array of products ids
+     * @param products the new array of products ids
      */
     public void setProducts(int[] products) {
         this.products = products;
     }
+
 
 }

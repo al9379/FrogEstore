@@ -3,6 +3,7 @@
   <a *ngIf="loggedIn()&&!admin()" routerLink="/login">{{userBanner()}}</a>
   <a *ngIf="loggedIn()&&!admin()" routerLink="/store">Store</a>
   <a *ngIf="loggedIn()&&!admin()" routerLink="/cart">Shopping Cart</a>
+  <a *ngIf="loggedIn()&&!admin()" routerLink="/checkout">Checkout</a>
   <a *ngIf="admin()" routerLink="/login">admin</a>
   <a *ngIf="admin()" routerLink="/products">Edit Products</a>
 
