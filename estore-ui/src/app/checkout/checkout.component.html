@@ -1,5 +1,5 @@
 <div class="products-menu" *ngIf="!checkEmptyCart()">
-  Items to purchase
+  <label>Items to purchase</label>
   <li class="products" *ngFor="let product of products">
     {{product.name}}: ${{product.price}}
   </li>
