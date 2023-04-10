@@ -12,6 +12,7 @@
   margin-right: auto;
   font-family: myFont;
   font-size: large;
+  list-style-type: none;
 }
 
 .checkout-info {
